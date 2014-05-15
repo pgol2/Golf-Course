@@ -1,0 +1,55 @@
+<?xml version="1.0" standalone="no" ?>
+
+
+<manifest identifier="com.scorm.golfsamples.runtime.basicruntime.12" version="1"
+         xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+         xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                             http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
+                             http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+	<organizations default="golf_sample_default_org">
+		<organization identifier="golf_sample_default_org">
+			<title>Test quiz for moodle </title>
+			<item identifier="item_1" identifierref="resource_1">
+				<title>Bhp test course</title>
+			</item>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="resource_1" type="webcontent" adlcp:scormtype="sco" href="index.html">
+
+      <file href="partials/page0/page0.html"/>
+      <file href="partials/page0/playing.jpg"/>
+      
+      <file href="partials/page1/page1.html"/>
+      <file href="partials/page1/par.jpg"/>
+
+      <file href="partials/page2/page2.html"/>
+      <file href="partials/page2/example.jpg"/>
+
+      <file href="partials/page3/page3.html"/>
+      <file href="partials/page2/devstories.webm"/>
+
+      <file href="partials/page4/page4.html"/>
+            
+
+      <file href="questions.json"/>
+
+      <file href="js/jquery-1.9.1.min.js"/>
+      <file href="js/handlebars.js"/>
+      <file href="js/quiz.js"/>
+      <file href="js/scripts.js"/>
+      <file href="js/SCORM_API_wrapper.js"/>
+
+      <file href="css/normalize.css"/>
+      <file href="css/style.css"/>
+
+		</resource>
+	</resources>
+</manifest>
