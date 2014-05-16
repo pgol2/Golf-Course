@@ -74,15 +74,32 @@ function getPreviousPage() {
 }
 
 function getPage(index) {
-  if( (index > 0 ) && (index < pages.length) ) {
-    
+  currentPage = index;
+  if( (index >= 0 ) && (index < pages.length) ) {
+    $.ajax({
+      url: pages[index]
+    }).done(function(html) {
+      $('.content').html(html);
+    });
+    updateProgressBar();
+    changeHash(index);
   }
 }
 function changeHash (pageId) {
   window.location.hash = pageId;
 }
 
+function locationHashChanged() {
+
+
+  var partialID = location.hash.substr(location.hash.indexOf('#')+1, location.hash.length)
+  getPage(partialID);
+  
+}
 $(document).ready(function() {
+
+
+  // ------ event listeners -------
 
   $('#nextButton').on("click", function(e) {
     e.preventDefault();
@@ -93,14 +110,18 @@ $(document).ready(function() {
     getPreviousPage();
   });
 
-    //chandle form subimition 
-    $('.container').on('click', '#quizButton', function (e) {
-      e.preventDefault();
-      var formOut = $('#quiz').serializeArray(); 
-      var score = checkQuiz( formOut, correctAnswers);  
-      $('.modal-body').html("twój wynik to: " + score);
-      console.log(score);
-    });
+  //chandle form subimition 
+  $('.container').on('click', '#quizButton', function (e) {
+    e.preventDefault();
+    var formOut = $('#quiz').serializeArray(); 
+    var score = checkQuiz( formOut, correctAnswers);  
+    $('.modal-body').html("twój wynik to: " + score);
+  });
+
+    if("onhashchange" in window) {
+      //event listner triggers when hash is changed
+      window.onhashchange = locationHashChanged;
+    }
 
 
     // API.LMSInitialize("");
