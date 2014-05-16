@@ -1,3 +1,4 @@
+( function($) {
 "use strict";
 
 var pages = [],
@@ -146,3 +147,4 @@ to do:
 bajery it p
 listenery na video
 */
+})(jQuery);
