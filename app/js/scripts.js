@@ -40,6 +40,11 @@ function updateProgressBar() {
   $(".progress-bar").css("width", val + '%');
 }
 
+function loadPages (pages) {
+  for(var i = 0; i < pages.length; i++ ) {
+    
+  }
+}
 
 function getNextPage() {
  if(currentPage < pages.length) {
@@ -70,7 +75,7 @@ function getPreviousPage() {
 
 function getPage(index) {
   if( (index > 0 ) && (index < pages.length) ) {
-    console.log(index);
+    
   }
 }
 function changeHash (pageId) {
