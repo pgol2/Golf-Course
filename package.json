@@ -13,6 +13,7 @@
     "http-server": "^0.6.1",
     "gulp": "^3.6.2",
     "gulp-less": "^1.2.3",
-    "gulp-watch": "^0.6.4"
+    "gulp-watch": "^0.6.4",
+    "gulp-livereload": "^1.5.0"
   }
 }

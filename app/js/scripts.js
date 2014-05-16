@@ -17,6 +17,7 @@ correctAnswers.push('a');
 correctAnswers.push('b');
 
 function checkQuiz(quizAnswers, correct) {
+
   var good = 0,
   i = 0;
 
@@ -42,36 +43,48 @@ function updateProgressBar() {
 
 function getNextPage() {
  if(currentPage < pages.length) {
-  $.ajax({
-    url: pages[currentPage]
-  }).done(function(html) {
-   $('.content').html(html);
- });
-  currentPage++;
-  updateProgressBar();
-}
+    $.ajax({
+      url: pages[currentPage]
+    }).done(function(html) {
+     $('.content').html(html);
+     });
+      currentPage++;
+      updateProgressBar();
+      changeHash(currentPage);
+  }
 }
 
 
 function getPreviousPage() {
  if(currentPage > 0) {
-  currentPage--;
-  $.ajax({
-    url: pages[currentPage]
-  }).done(function(html) {
-   $('.content').html(html);
- });
-  updateProgressBar();
+    currentPage--;
+    $.ajax({
+      url: pages[currentPage]
+    }).done(function(html) {
+     $('.content').html(html);
+   });
+    updateProgressBar();
+    changeHash(currentPage);
+  }
 }
 
+function getPage(index) {
+  if( (index > 0 ) && (index < pages.length) ) {
+    console.log(index);
+  }
+}
+function changeHash (pageId) {
+  window.location.hash = pageId;
 }
 
 $(document).ready(function() {
 
-  $('#nextButton').on("click", function() {
+  $('#nextButton').on("click", function(e) {
+    e.preventDefault();
     getNextPage();
   });
-  $('#prevButton').on("click", function() {
+  $('#prevButton').on("click", function(e) {
+    e.preventDefault();
     getPreviousPage();
   });
 
@@ -85,15 +98,13 @@ $(document).ready(function() {
     });
 
 
-
-
     // API.LMSInitialize("");
     // API.LMSSetValue('cmi.core.lesson_status','completed');
     // API.LMSCommit("");
 
-    pipwerks.SCORM.connection.initialize();
-    pipwerks.SCORM.data.set('cmi.core.lesson_status','completed');
-    pipwerks.SCORM.data.save();
+    // pipwerks.SCORM.connection.initialize();
+    // pipwerks.SCORM.data.set('cmi.core.lesson_status','completed');
+    // pipwerks.SCORM.data.save();
 
   });
 

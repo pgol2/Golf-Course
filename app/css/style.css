@@ -1,73 +1,17 @@
-body {
-  font-size: 15px;
-  background-color: #fff;
-  background-size: 100% 1.2em;
-}
 video {
   width: 100%    !important;
   height: auto   !important;
 }
-/*test*/
-img {
-  margin: 15px;
+.container .left-menu {
+  width: 150px;
+  margin-top: 5px;
+  float: left;
 }
-.relative {
-  position: relative;
+.container .content {
+  margin-left: 170px;
 }
-h1 {
-  color: #305386;
-  margin: 3% 0;
-}
-.red {
-  background-color: #fe8e96;
-}
-.green {
-  background-color: #bfe0a6;
-}
-/* pages setup */
-#answers > li {
-  margin-left: 10px;
-  cursor: pointer;
-}
-#answers > li:hover {
-  color: gray;
-}
-.prompt {
-  display: none;
-  color: #ff8e8e;
-}
-.hide {
-  display: none;
-}
-.user {
-  position: absolute;
-  right: 0;
-  top: 3px;
-  text-align: right;
-}
-.progress {
-  background-color: gray;
-  width: 100%;
-  min-height: 20px;
-  padding: 5px;
-}
-.bar {
-  background-color: #a5cdf8;
-  height: 10px;
-  width: 2%;
-}
-.content {
-  margin-bottom: 100px;
-}
-#golfimg {
+.container .content .course-img {
   float: right;
-}
-td {
-  text-align: center;
-  border: solid 1px #AAAAAA;
-  padding: 3px 3px 3px 3px;
-}
-video {
-  margin: 0 auto;
-  display: block;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
