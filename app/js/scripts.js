@@ -93,7 +93,7 @@ function changeHash (pageId) {
 function locationHashChanged() {
 
 
-  var partialID = location.hash.substr(location.hash.indexOf('#')+1, location.hash.length)
+  var partialID = location.hash.substr(location.hash.indexOf('#')+1, location.hash.length);
   getPage(partialID);
   
 }
