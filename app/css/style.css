@@ -15,3 +15,7 @@ video {
   margin-bottom: 10px;
   margin-left: 10px;
 }
+.visited::after {
+  content: " ✓";
+  color: #2bc436;
+}
