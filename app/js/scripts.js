@@ -37,7 +37,7 @@ function checkQuiz(quizAnswers, correct) {
 }
 
 function updateProgressBar() {
-  var val = (currentPage) * 100 / (pages.length);
+  var val = (currentPage) * 100 / (pages.length - 1);
   $(".progress-bar").css("width", val + '%');
 }
 
@@ -95,13 +95,20 @@ function locationHashChanged() {
 
   var partialID = location.hash.substr(location.hash.indexOf('#')+1, location.hash.length);
   getPage(partialID);
+  updateContentList(partialID);
   
 }
+
+function updateContentList (pageID) {
+  var listItem = $('.content-list').find('li')[pageID];
+  $(listItem).addClass('visited')
+}
+
+
 $(document).ready(function() {
 
 
   // ------ event listeners -------
-
   $('#nextButton').on("click", function(e) {
     e.preventDefault();
     getNextPage();
