@@ -1,8 +1,9 @@
 var gulp = require('gulp'),
-path = require('path'),
-less = require('gulp-less'),
-watch = require('gulp-watch'),
-livereload = require('gulp-livereload');
+    path = require('path'),
+    less = require('gulp-less'),
+    watch = require('gulp-watch'),
+    livereload = require('gulp-livereload'),
+    zip = require('gulp-zip');
 
 
 gulp.task('css', function() {
@@ -13,9 +14,13 @@ gulp.task('css', function() {
 
 
 gulp.task('watch', function() {
-
     gulp.watch('./app/css/less/**/*.less', ['css']);
+});
 
+gulp.task('zip', function() {
+    return gulp.src('app/**/*')
+            .pipe(zip('scorm.zip'))
+            .pipe(gulp.dest('zip'));
 });
 
 
