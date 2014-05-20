@@ -10,6 +10,7 @@
     ScormCourse.pages[4] = "partials/page4/page4.html";
 
 
+   
     //  correct answers array
     ScormCourse.correctAnswers.push('a');
     ScormCourse.correctAnswers.push('b');
