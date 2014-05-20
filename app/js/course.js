@@ -19,6 +19,33 @@ ScormCourse.getNextPage = function() {
   }
 };
 
+ScormCourse.getPages = function() {
+
+  function appendHelper(html) {
+      var div = $('<div class="content clearfix hide"></div>');
+      div.append(html);
+      $('.card').append(div);    
+  }
+
+  for(var i = 0; i < ScormCourse.pages.length; i++) {
+    console.log('get pages');
+    $.ajax({
+      url: ScormCourse.pages[i]
+    }).done(appendHelper);
+  }
+};
+
+
+ScormCourse.getNext = function(index) {
+
+  // addClass hide to current 
+  // .content div
+  // remov class hide from the next div
+
+  //we need to set current page
+  ScormCourse.currentPage = index;  
+
+};
 ScormCourse.getPreviousPage = function() {
 
  if(ScormCourse.currentPage > 0) {

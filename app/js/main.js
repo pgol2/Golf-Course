@@ -17,7 +17,7 @@
 
     // when dom is loaded
     $(document).ready(function() {
-
+        ScormCourse.getPages();
         $('#nextButton').on("click", function(e) {
             e.preventDefault();
             ScormCourse.getNextPage();
