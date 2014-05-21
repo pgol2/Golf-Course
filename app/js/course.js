@@ -7,11 +7,11 @@ var ScormCourse = {
 
 ScormCourse.getNextPage = function() {
 
-    if(ScormCourse.currentPage < ScormCourse.pages.length) {
-        $.ajax({
-          url: ScormCourse.pages[ScormCourse.currentPage]
-      }).done(function(html) {
-       $('.content').html(html);
+  if(ScormCourse.currentPage < ScormCourse.pages.length) {
+      $.ajax({
+        url: ScormCourse.pages[ScormCourse.currentPage]
+    }).done(function(html) {
+     $('.content').html(html);
    });
       ScormCourse.currentPage++;
       ScormCourse.updateProgressBar();
@@ -36,16 +36,6 @@ ScormCourse.getPages = function() {
 };
 
 
-ScormCourse.getNext = function(index) {
-
-  // addClass hide to current 
-  // .content div
-  // remov class hide from the next div
-
-  //we need to set current page
-  ScormCourse.currentPage = index;  
-
-};
 ScormCourse.getPreviousPage = function() {
 
  if(ScormCourse.currentPage > 0) {
@@ -113,11 +103,18 @@ ScormCourse.checkQuiz = function(quizAnswers, correct) {
   if(isNaN(score)) {
     return 'nie zanaczono wszystkich odp';
   }
+  var bookmark = pipwerks.SCORM.get("cmi.core.lesson_location");
+
+  console.log("bookmark: " + bookmark);
+  console.log(bookmark);
+  if( score === 100 ) {
+    console.log("cmi status = completed");
+    pipwerks.SCORM.status("set", "completed");
+  }
+
   score += " %";
   return score;
 };
-
-
 
 
 

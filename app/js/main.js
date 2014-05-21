@@ -1,4 +1,4 @@
-(function () {
+var item  = (function () {
     "use strict";
 
 
@@ -18,7 +18,12 @@
 
     // when dom is loaded
     $(document).ready(function() {
-        ScormCourse.getPages();
+
+        //Api wrapper call
+        pipwerks.SCORM.init();
+
+        
+
         $('#nextButton').on("click", function(e) {
             e.preventDefault();
             ScormCourse.getNextPage();
@@ -47,6 +52,16 @@
             console.log(score);
         });
 
+        //chandle save to SCORM
+        $('.card').on("click", '#exitLesson', function(event) {
+            event.preventDefault();
+            pipwerks.SCORM.quit();
+            console.log("SCORM quit");
+        });
+
     });
+
+    //TODO - remove this after testing
+    return ScormCourse;
 
 })(jQuery);
