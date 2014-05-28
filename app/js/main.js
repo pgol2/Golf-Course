@@ -1,8 +1,9 @@
-var item  = (function () {
+var item  = (function ($, window) {
     "use strict";
 
 
     // init parials array
+
     ScormCourse.pages[0] = "partials/page0/page0.html";
     ScormCourse.pages[1] = "partials/page1/page1.html";
     ScormCourse.pages[2] = "partials/page2/page2.html";
@@ -59,9 +60,29 @@ var item  = (function () {
             console.log("SCORM quit");
         });
 
+
+        //new partial code
+        $.getJSON("slide.json")
+            .done(function(slideObject) {
+                var html = $('#slideTemplate').html();
+                console.log("hmtl  " + html);
+                var template = Handlebars.compile(html);
+                var htmlOut = template(slideObject);
+                $('.card').append(htmlOut);
+            });
+
+        $.getJSON("contentList.json")
+            .done(function(listObject) {
+                var html = $('#contentList').html();
+                console.log("hmtl  " + html);
+                var template = Handlebars.compile(html);
+                var htmlOut = template(listObject);
+                $('.left-menu').append(htmlOut);
+            });
+
     });
 
     //TODO - remove this after testing
     return ScormCourse;
 
-})(jQuery);
+})(jQuery, window);

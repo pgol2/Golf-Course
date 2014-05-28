@@ -18,6 +18,22 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+    <script id="slideTemplate" type="x-handlebars-template">
+        <h2>{{title}}</h2>
+        <p>{{content}}</p>
+        <img src="{{img.path}}" alt="{{img.alt}}" width="{{image.width}}" height="{{image.height}}" />
+    </script>
+
+    <script id="contentList" type="x-handlebars-template">
+        <h2>{{title}}</h2>
+        <ol class="content-list">
+            {{#each list}}
+            <li><a href="#{{@index}}">{{this}}</a></li>
+            {{/each}}
+        </ol>
+    </script>
+
 </head>
 <body>
   
@@ -35,23 +51,16 @@
     <button class="btn btn-default" id="nextButton">&#8594;</button>
   </div>
   <div class="left-menu">
-    <h4>Spis treści:</h4>
-    <ol class="content-list">
-      <li class="visited"><a href="#0">Wstęp</a></li>
-      <li><a href="#1">Pole Golfowe</a></li>
-      <li><a href="#2">Zasady</a></li>
-      <li><a href="#3">Video</a></li>
-      <li><a href="#4">Test Wiedzy</a></li>
-    </ol>
+
   </div>
   <div class="card">
-    <div class="content clearfix">
-    <h2>Witaj w kursie</h2>
-    <p> 
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea doloribus commodi eveniet quia asperiores quibusdam obcaecati necessitatibus illum ut assumenda. Ullam tempore magnam accusantium eum impedit obcaecati qui voluptatum nesciunt!
-    </p>
-    
-  </div> 
+    <!--<div class="content clearfix">-->
+    <!--<h2>Witaj w kursie</h2>-->
+    <!--<p>-->
+      <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea doloribus commodi eveniet quia asperiores quibusdam obcaecati necessitatibus illum ut assumenda. Ullam tempore magnam accusantium eum impedit obcaecati qui voluptatum nesciunt!-->
+    <!--</p>-->
+
+    <!--</div>-->
   </div> 
 
 </article>
@@ -64,6 +73,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../../js/SCORM_API_wrapper.js"></script>
+<script src="../../js/handlebars.js"></script>
 <script src="../../js/course.js"></script>
 <script src="../../js/main.js"></script>
 

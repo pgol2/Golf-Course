@@ -1,0 +1,10 @@
+{
+    "title": "this is title",
+    "content": "Przykładowy tekst w naszym kursie",
+    "image": {
+        "path": "path/to/file.img",
+        "alt": "iamge alt",
+        "width": "200px",
+        "height": "200px"
+    }
+}
