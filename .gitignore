@@ -7,3 +7,4 @@ old/
 .DS_Store
 bower_components/
 *.zip
+npm-debug.log

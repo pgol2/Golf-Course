@@ -1,9 +1,8 @@
-var item  = (function ($, window) {
-    "use strict";
+
+
 
 
     // init parials array
-
     ScormCourse.pages[0] = "partials/page0/page0.html";
     ScormCourse.pages[1] = "partials/page1/page1.html";
     ScormCourse.pages[2] = "partials/page2/page2.html";
@@ -11,7 +10,7 @@ var item  = (function ($, window) {
     ScormCourse.pages[4] = "partials/page4/page4.html";
 
 
-   
+
     //  correct answers array
     ScormCourse.correctAnswers.push('a');
     ScormCourse.correctAnswers.push('b');
@@ -19,11 +18,11 @@ var item  = (function ($, window) {
 
     // when dom is loaded
     $(document).ready(function() {
-
+        "use strict";
         //Api wrapper call
         pipwerks.SCORM.init();
 
-        
+
 
         $('#nextButton').on("click", function(e) {
             e.preventDefault();
@@ -35,10 +34,10 @@ var item  = (function ($, window) {
             ScormCourse.getPreviousPage();
         });
 
-       
-       // check if  onhashchange is supported 
+
+        // check if  onhashchange is supported
         if("onhashchange" in window) {
-             //  each slide url is lesson1.html#3
+            //  each slide url is lesson1.html#3
             //  we bind change of window.location.hash and
             //  get corresonding partial when page id is changed
             window.onhashchange = ScormCourse.locationHashChanged;
@@ -47,8 +46,8 @@ var item  = (function ($, window) {
         // chandle quiz submition
         $('.card').on('click', '#quizButton', function(event) {
             event.preventDefault();
-            var formOut = $('#quiz').serializeArray(); 
-            var score = ScormCourse.checkQuiz( formOut, ScormCourse.correctAnswers);  
+            var formOut = $('#quiz').serializeArray();
+            var score = ScormCourse.checkQuiz( formOut, ScormCourse.correctAnswers);
             $('.modal-content').html("twój wynik to: " + score);
             console.log(score);
         });
@@ -60,29 +59,4 @@ var item  = (function ($, window) {
             console.log("SCORM quit");
         });
 
-
-        //new partial code
-        $.getJSON("slide.json")
-            .done(function(slideObject) {
-                var html = $('#slideTemplate').html();
-                console.log("hmtl  " + html);
-                var template = Handlebars.compile(html);
-                var htmlOut = template(slideObject);
-                $('.card').append(htmlOut);
-            });
-
-        $.getJSON("contentList.json")
-            .done(function(listObject) {
-                var html = $('#contentList').html();
-                console.log("hmtl  " + html);
-                var template = Handlebars.compile(html);
-                var htmlOut = template(listObject);
-                $('.left-menu').append(htmlOut);
-            });
-
     });
-
-    //TODO - remove this after testing
-    return ScormCourse;
-
-})(jQuery, window);
