@@ -1,4 +1,6 @@
 var ScormCourse = (function() {
+    'use strict';
+    
     var Course = {
         pages: [],
         currentPage: 0,
@@ -7,7 +9,7 @@ var ScormCourse = (function() {
             pipwerks.SCORM.init();
             Course.config = config;
             Course.bindEvents();
-            console.log(ScormCourse.config.pages);
+            console.log(Course.config.pages);
             console.log(Course.config.nextButton);
         },
         bindEvents : function() {
@@ -50,7 +52,7 @@ var ScormCourse = (function() {
                 $.ajax({
                     url: Course.pages[Course.currentPage]
                 }).done(function(html) {
-                    $('.content').html(html);
+                    $(Course.config.content).html(html);
                 });
                 Course.currentPage++;
                 Course.updateProgressBar();
@@ -64,7 +66,7 @@ var ScormCourse = (function() {
                 $.ajax({
                     url: Course.pages[Course.currentPage]
                 }).done(function(html) {
-                    $('.content').html(html);
+                    $(Course.config.content).html(html);
                 });
                 Course.updateProgressBar();
                 Course.changeHash(Course.currentPage);
@@ -78,7 +80,7 @@ var ScormCourse = (function() {
                 $.ajax({
                     url: Course.pages[index]
                 }).done(function(html) {
-                    $('.content').html(html);
+                    $(Course.config.content).html(html);
                 });
                 Course.updateProgressBar();
                 Course.changeHash(index);
