@@ -1,6 +1,7 @@
 //=== konfiguracja ==============================================
 
 // init parials array
+// TO DO - fix this 
 ScormCourse.pages[0] = "partials/page0/page0.html";
 ScormCourse.pages[1] = "partials/page1/page1.html";
 ScormCourse.pages[2] = "partials/page2/page2.html";
@@ -20,42 +21,31 @@ ScormCourse.correctAnswers.push('b');
 $(document).ready(function () {
     "use strict";
     //Api wrapper call
-    pipwerks.SCORM.init();
+    var slides = [];
+    slides.push("partials/page0/page0.html");
+    slides.push("partials/page0/page1.html");
+    slides.push("partials/page0/page2.html");
+    slides.push("partials/page0/page3.html");
+    slides.push("partials/page0/page4.html");
 
+    var config = {
+        pages: slides,
+        nextButton: '#nextButton',
+        previousButton: '#prevButton',
+        card: '.card',
+        content: '.content',
+        quiz: {
+            mainTag: '#quiz',
+            submitBtn: '#quizButton',
+            exitBtn: '#exitLesson'
+        },
+        progressBar: '.progress-'
 
-    $('#nextButton').on("click", function (e) {
-        e.preventDefault();
-        ScormCourse.getNextPage();
-    });
+    };
 
-    $('#prevButton').on("click", function (e) {
-        e.preventDefault();
-        ScormCourse.getPreviousPage();
-    });
+    ScormCourse.init(config);
+     
 
-
-    // check if  onhashchange is supported
-    if ("onhashchange" in window) {
-        //  each slide url is lesson1.html#3
-        //  we bind change of window.location.hash and
-        //  get corresonding partial when page id is changed
-        window.onhashchange = ScormCourse.locationHashChanged;
-    }
-
-    // chandle quiz submition
-    $('.card').on('click', '#quizButton', function (event) {
-        event.preventDefault();
-        var formOut = $('#quiz').serializeArray();
-        var score = ScormCourse.checkQuiz(formOut, ScormCourse.correctAnswers);
-        $('.modal-content').html("twój wynik to: " + score);
-        console.log(score);
-    });
-
-    //chandle save to SCORM
-    $('.card').on("click", '#exitLesson', function (event) {
-        event.preventDefault();
-        pipwerks.SCORM.quit();
-        console.log("SCORM quit");
-    });
+    
 
 });
