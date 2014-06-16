@@ -9,19 +9,19 @@ var ScormCourse = (function() {
             pipwerks.SCORM.init();
             Course.config = config;
             Course.bindEvents();
-            console.log(Course.config.pages);
-            console.log(Course.config.nextButton);
+            Course.lessonSlider.sayHello();
         },
         bindEvents : function() {
-            console.log(Course.config.quiz.submitBtn);
-            $(Course.config.nextButton).on("click", function (e) {
-                e.preventDefault();
-                Course.getNextPage();
-            });
 
-            $(Course.config.previousButton).on("click", function (e) {
+            $(Course.config.controlls).find('button').on("click", function(e) {
                 e.preventDefault();
-                Course.getPreviousPage();
+                var dir = $(this).data('dir');
+                if(dir === 'next') {
+                    Course.currentPage++;
+                } else {
+                    Course.currentPage--;
+                }
+                Course.getPage(Course.currentPage);
             });
 
             if ("onhashchange" in window) {
@@ -37,40 +37,12 @@ var ScormCourse = (function() {
                 var formOut = $(Course.config.quiz.mainTag).serializeArray();
                 var score = Course.checkQuiz(formOut, Course.correctAnswers);
                 $('.modal-content').html("twój wynik to: " + score);
-                console.log(score);
             });
 
             $(Course.config.card).on("click", Course.config.quiz.exitBtn, function (event) {
                 event.preventDefault();
                 pipwerks.SCORM.quit();
-                console.log("SCORM quit");
             });
-        },
-        getNextPage : function() {
-
-            if(Course.currentPage < Course.pages.length) {
-                $.ajax({
-                    url: Course.pages[Course.currentPage]
-                }).done(function(html) {
-                    $(Course.config.content).html(html);
-                });
-                Course.currentPage++;
-                Course.updateProgressBar();
-                Course.changeHash(Course.currentPage);
-            }
-        },
-        getPreviousPage : function() {
-
-            if(Course.currentPage > 0) {
-                Course.currentPage--;
-                $.ajax({
-                    url: Course.pages[Course.currentPage]
-                }).done(function(html) {
-                    $(Course.config.content).html(html);
-                });
-                Course.updateProgressBar();
-                Course.changeHash(Course.currentPage);
-            }
         },
 
         getPage : function(index) {
@@ -84,6 +56,12 @@ var ScormCourse = (function() {
                 });
                 Course.updateProgressBar();
                 Course.changeHash(index);
+            }
+        },
+
+        lessonSlider: {
+            sayHello: function() {
+                console.log('hello form lesson slider');
             }
         },
 
@@ -128,10 +106,7 @@ var ScormCourse = (function() {
             }
             var bookmark = pipwerks.SCORM.get("cmi.core.lesson_location");
 
-            console.log("bookmark: " + bookmark);
-            console.log(bookmark);
             if( score === 100 ) {
-                console.log("cmi status = completed");
                 pipwerks.SCORM.status("set", "completed");
             }
 

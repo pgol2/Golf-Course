@@ -2,12 +2,12 @@ video {
   width: 100%    !important;
   height: auto   !important;
 }
-.container .left-menu {
+.left-menu {
   width: 150px;
   margin-top: 5px;
   float: left;
 }
-.container .content {
+ .card {
   margin-left: 170px;
 }
 .container .content .course-img {

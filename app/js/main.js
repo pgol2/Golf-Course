@@ -32,6 +32,7 @@ $(document).ready(function () {
         pages: slides,
         nextButton: '#nextButton',
         previousButton: '#prevButton',
+        controlls: '#controls',
         card: '.card',
         content: '.content',
         quiz: {
