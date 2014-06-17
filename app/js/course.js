@@ -9,19 +9,17 @@ var ScormCourse = (function() {
             pipwerks.SCORM.init();
             Course.config = config;
             Course.bindEvents();
-            Course.lessonSlider.sayHello();
         },
         bindEvents : function() {
 
-            $(Course.config.controlls).find('button').on("click", function(e) {
+            $(Course.config.nextButton).on('click', function(e) {
                 e.preventDefault();
-                var dir = $(this).data('dir');
-                if(dir === 'next') {
-                    Course.currentPage++;
-                } else {
-                    Course.currentPage--;
-                }
-                Course.getPage(Course.currentPage);
+                Course.getPage(++Course.currentPage);
+            });
+
+            $(Course.config.previousButton).on('click', function(e) {
+                e.preventDefault();
+                Course.getPage(--Course.currentPage);
             });
 
             if ("onhashchange" in window) {
@@ -59,11 +57,7 @@ var ScormCourse = (function() {
             }
         },
 
-        lessonSlider: {
-            sayHello: function() {
-                console.log('hello form lesson slider');
-            }
-        },
+       
 
         changeHash : function(pageId) {
 

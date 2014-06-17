@@ -19,3 +19,18 @@ video {
   content: " ✓";
   color: #2bc436;
 }
+.slider {
+  width: 900px;
+  overflow: hidden;
+}
+.slide {
+  width: 900px;
+  overflow: hidden;
+}
+.slider ul {
+  width: 10000px;
+  list-style: none;
+}
+.slider li {
+  float: left;
+}
