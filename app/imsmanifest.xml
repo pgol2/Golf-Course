@@ -10,7 +10,7 @@
                              http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
 
   <metadata>
-    <schema>ADL SCORM</schema>
+    <schema>BHP Kurs</schema>
     <schemaversion>1.2</schemaversion>
   </metadata>
 	<organizations default="golf_sample_default_org">
@@ -24,31 +24,25 @@
 	<resources>
 		<resource identifier="resource_1" type="webcontent" adlcp:scormtype="sco" href="index.html">
 
-      <file href="partials/page0/page0.html"/>
-      <file href="partials/page0/playing.jpg"/>
-      
-      <file href="partials/page1/page1.html"/>
-      <file href="partials/page1/par.jpg"/>
 
-      <file href="partials/page2/page2.html"/>
-      <file href="partials/page2/example.jpg"/>
+      <file src="scripts/lib/jquery.js"/>
+      <file src="scripts/lib/angular.js"/>
+      <file src="scripts/lib/bootstrap.js"/>
+      <file src="scripts/lib/angular-resource.js"/>
+      <file src="scripts/lib/angular-cookies.js"/>
+      <file src="scripts/lib/angular-sanitize.js"/>
+      <file src="scripts/lib/angular-route.js"/>
 
-      <file href="partials/page3/page3.html"/>
-      <file href="partials/page2/devstories.webm"/>
+      <file href="scripts/app.js"/>
+      <file href="scripts/controllers/lesson.js"/>
+      <file href="scripts/controllers/main.js"/>
+      <file href="scripts/controllers/nav.js"/>
+      <file href="scripts/controllers/slide.js"/>
 
-      <file href="partials/page4/page4.html"/>
-            
 
-      <file href="questions.json"/>
+      <file href="index.html"/>
 
-      <file href="js/jquery-1.9.1.min.js"/>
-      <file href="js/handlebars.js"/>
-      <file href="js/quiz.js"/>
-      <file href="js/scripts.js"/>
-      <file href="js/SCORM_API_wrapper.js"/>
-
-      <file href="css/normalize.css"/>
-      <file href="css/style.css"/>
+      <file href="styles/main.css"/>
 
 		</resource>
 	</resources>

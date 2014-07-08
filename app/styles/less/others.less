@@ -1,0 +1,45 @@
+@import "variables.less";
+
+
+/* Micro ClearFix Mixin */
+.clearfix{
+  zoom:1;
+  &:before, &:after{ content:""; display:table; }
+  &:after{ clear: both; }
+}
+
+.relative {
+  position: relative;
+}
+.inline {
+  display: inline;
+}
+
+.dropdown-menu {
+  .box-opacity;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius:0;
+}
+// Hover/Focus state
+.dropdown-menu > li > a {
+  color: #ffffff;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #000000;
+  }
+}
+
+// Active state
+.dropdown-menu > .active > a {
+  &,
+  &:hover,
+  &:focus {
+    color: #ffffff;
+    text-decoration: none;
+    outline: 0;
+    background-color: #000000;
+  }
+}

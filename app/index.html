@@ -1,40 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sample Scorm Quiz</title>
-  <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Player Moodle</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/vendor.css -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/style.css">
+        <!-- endbuild -->
 
-  <!-- Bootstrap -->
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
+         <!-- handlebars templates -->
+        <script id="contentList" type="x-handlebars-template">
+            <ul class="content-list">
+                {{#each lessons}}
+                <li>
+                    <span class="subject">TEMAT{{@index}}:</span>
+                    <a href="#{{@index}}">{{this}}</a>
+                </li>
+                {{/each}}
+            </ul>
+        </script>
+
+        <script id="panelTitle" type="x-handlebars-template">
+            <h3>LEKCJA {{number}}</h3>
+            <h2>{{subject}}</h2>
+        </script>
+
+        <script id="mainContent" type="x-handlebars-template">
+            <div class="slider">
+                <ul>
+                    {{#each slides}}
+                    <li>
+                        <div class="slide">
+                            <h1>{{title}}</h1>
+                            <p>{{text}}</p>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </script>
+
+        <script id="controllsInfo" type="x-handlebars-template">
+            <ul>
+                <li><span class="subject-line">LEKCJA:</span>1.{{subject}}</li>
+                <li><span class="subject-line">TEMAT :</span> 1.{{slides.0.title}}</li>
+            </ul>
+        </script>
+        <!-- handlebars templates end -->
+    </head>
+    <body>
+
+
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="wrapper">
+            <div class="panel-left">
+                <div class="panel-title">
+                    <!--<h3>LEKCJA 1</h3>-->
+                    <!--<h2>Tytuł lekcji na dwie <br> linijki tekstu</h2>-->
+                </div>
+                <div class="panel-content">
+
+                </div>
+            </div>
+            <div class="main">
+                <div class="main-content clearfix content"></div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                        <span class="sr-only">60% Complete</span>
+                    </div>
+                </div>
+                <div class="controlls-main">
 
 
 
-</head>
-<body>
+                    <div class="controlls-info"></div>
+
+                    <div class="controlls-buttons">
+                        <ul>
+                            <li><a href="#" id="prevButton"  class="tooltipLink" data-toggle="tooltip" data-placement="top" title="Poprzednia lekcja">Poprzednia Lekcja</a></li>
+                            <li><a href="#" id="prevButtonSlide"  class="tooltipLink" data-toggle="tooltip" data-placement="top" title="Poprzedni ekran"></a></li>
+                            <li><a href="#" id="nextButtonSlide" class="tooltipLink" data-toggle="tooltip" data-placement="top" title="Następny ekran"></a></li>
+                            <li><a href="#" id="nextButton"  class="tooltipLink" data-toggle="tooltip" data-placement="top" title="Następna lekcja"></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="controlls-settings">
+                        <ul class="setting-list">
+                            <li><a href="#" id="vol" class="tooltipLink dropdown-toggle" data-toggle="tooltip" data-placement="top" title="Głośność">Volume</a></li>
+
+                            <li class="btn-group">
+                                <a href="#" id="settings" class="tooltipLink" data-toggle="dropdown" data-placement="top" title="Ustawienia">Ustawienia</a>
+                                
+                            </li>
+
+                            <li><a href="#" id="save" class="tooltipLink" data-toggle="tooltip" data-placement="top" title="Zapisz">Zapisz</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>   <!-- wrapper end  -->
 
 
-<div class="container">
-  <h1>Witaj w Kursie</h1>
-  <div class="list-group">
-    <a class="list-group-item" href="lessons/lesson1/lesson1.html">Lekcja Pierwsza</a>
-    <a class="list-group-item" href="#">Lekcja Druga</a>
-  </div>
-</div>
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/handlebars/handlebars.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="js/handlebars.js"></script>
+
+        <!-- build:js scripts/plugins.js -->
+        <script src="../bower_components/bootstrap/js/affix.js"></script>
+        <script src="../bower_components/bootstrap/js/alert.js"></script>
+        <script src="../bower_components/bootstrap/js/dropdown.js"></script>
+        <script src="../bower_components/bootstrap/js/tooltip.js"></script>
+        <script src="../bower_components/bootstrap/js/modal.js"></script>
+        <script src="../bower_components/bootstrap/js/transition.js"></script>
+        <script src="../bower_components/bootstrap/js/button.js"></script>
+        <script src="../bower_components/bootstrap/js/popover.js"></script>
+        <script src="../bower_components/bootstrap/js/carousel.js"></script>
+        <script src="../bower_components/bootstrap/js/scrollspy.js"></script>
+        <script src="../bower_components/bootstrap/js/collapse.js"></script>
+        <script src="../bower_components/bootstrap/js/tab.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/SCORM_API_wrapper.js"></script>
+        <script src="scripts/course.js"></script>
+        <script src="scripts/main.js"></script>
+        <script src="scripts/slider.js"></script>
+        <!-- endbuild -->
 </body>
 </html>

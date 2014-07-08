@@ -1,0 +1,18 @@
+{
+    "number" : "1",
+    "subject": "Temat lekcji4",
+    "slides": [
+        {
+            "title": "Lekcja number 4",
+            "text": "this is slide 1 text"
+        },
+        {
+            "title": "this is slide 2 title",
+            "text": "this is slide 2 text"
+        },
+        {
+            "title": "this is slide 3 title",
+            "text": "this is slide 3 text"
+        }
+    ]
+}

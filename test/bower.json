@@ -2,9 +2,8 @@
   "name": "playerhtmlcssg",
   "private": true,
   "dependencies": {
-    "bootstrap": "~3.0.3",
-    "jquery": "~1.11.0",
-    "handlebars": "~1.3.0"
+    "chai": "~1.8.0",
+    "mocha": "~1.14.0"
   },
   "devDependencies": {}
 }
